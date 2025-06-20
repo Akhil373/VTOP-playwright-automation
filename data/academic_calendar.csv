@@ -1,6 +1,28 @@
-Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday
-,,1Instructional Day(Working Day),2Instructional Day(Working Day),3Instructional Day(Working Day),4Instructional Day(Working Day/ LID for Lab Classes),5
-6,7Instructional Day(Working Day/ LAB FAT),8Instructional Day(Working Day/ LAB FAT),9Instructional Day(Working Day/ LAB FAT),10Instructional Day(Working Day/ LAB FAT),11Instructional Day(Working Day/ LAB FAT),12
-13,14Holiday(Tamil New Year's Day/ Dr. B. R. Ambedkar Birthday),15Instructional Day(Working Day),16Instructional Day(Working Day),17Instructional Day(Working Day),18No Instructional Day(Good Friday),19
-20,21Instructional Day(Working Day),22Instructional Day(Working Day),23Instructional Day(Working Day),24Instructional Day(Working Day),25Instructional Day(Working Day),26Instructional Day(Working Day / Monday Day Order/LID for theory clas)
-27,28,29,30,,,
+Month,Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday
+DEC-2024,1,2,3,4,5,6,7
+DEC-2024,8,9,10,11,12Instructional Day(FID/ Working Day/ Add - Drop),13Instructional Day(Working Day/ Add - Drop),14Instructional Day(Monday Day Order)
+DEC-2024,15,16Instructional Day(Working Day),17Instructional Day(Working Day),18Instructional Day(Working Day),19Instructional Day(Working Day),20Instructional Day(Working Day),21Instructional Day(Tuesday Day Order)
+DEC-2024,22Holiday(Winter Vacation),23Holiday(Winter Vacation),24Holiday(Winter Vacation),25Holiday(Winter Vacation),26Holiday(Winter Vacation),27Holiday(Winter Vacation),28Holiday(Winter Vacation)
+DEC-2024,29Holiday(Winter Vacation),30Holiday(Winter Vacation),31Holiday(Winter Vacation),,,,
+JAN-2025,,,,1Holiday(Winter Vacation),2Instructional Day(Working Day),3Instructional Day(Working Day),4Instructional Day(Wednesday Day Order)
+JAN-2025,5,6Instructional Day(Working Day),7Instructional Day(Working Day),8Instructional Day(Working Day),9Instructional Day(Working Day),10Instructional Day(Working Day),11Instructional Day(TUESDAY DAY ORDER)
+JAN-2025,12,13Instructional Day(Working Day),14Holiday(Pongal),15Holiday(Thiruvalluvar Day),16Holiday(Uzhavar Thirunal),17Holiday(Pongal Holiday),18No Instructional Day
+JAN-2025,19,20Instructional Day(Working Day),21Instructional Day(Working Day),22Instructional Day(Working Day),23Instructional Day(Working Day),24Instructional Day(Working Day),25CAT - I(CAT - I)
+JAN-2025,26Holiday(Republic Day),27CAT - I(CAT - I),28CAT - I(CAT - I),29CAT - I(CAT - I),30CAT - I(CAT - I),31CAT - I(CAT - I),
+FEB-2025,,,,,,,1CAT - I(CAT - I)
+FEB-2025,2.0,3Instructional Day(Working Day),4Instructional Day(Working Day),5Instructional Day(Working Day),6Instructional Day(Working Day),7Instructional Day(Working Day),8Instructional Day(Thursday Dayorder)
+FEB-2025,9.0,10Instructional Day(Working Day),11No Instructional Day(Thaipoosam),12Instructional Day(Working Day),13Instructional Day(Working Day),14Instructional Day(Working Day),15
+FEB-2025,16.0,17Instructional Day(Working Day),18Instructional Day(Working Day),19Instructional Day(Working Day),20Instructional Day(Working Day),21Instructional Day(Working Day),22
+FEB-2025,23.0,24Instructional Day(Working Day/ Course Withdraw),25Instructional Day(Working Day/ Course Withdraw),26No Instructional Day(Vibrance/ Course Withdraw),27No Instructional Day(Vibrance),28No Instructional Day(Vibrance),
+MAR-2025,,,,,,,1No Instructional Day(Vibrance)
+MAR-2025,2,3Instructional Day(Working Day),4Instructional Day(Working Day),5Instructional Day(Working Day),6Instructional Day(Working Day),7Instructional Day(Working Day),8Instructional Day(Friday Dayorder)
+MAR-2025,9,10Instructional Day(Working Day),11Instructional Day(Working Day),12Instructional Day(Working Day),13Instructional Day(Working Day),14Holiday(Holi),15CAT - II(CAT - II)
+MAR-2025,16CAT - II(CAT - II),17CAT - II(CAT - II),18CAT - II(CAT - II),19CAT - II(CAT - II),20CAT - II(CAT - II),21CAT - II(CAT - II),22CAT - II(CAT - II)
+MAR-2025,23,24Instructional Day(Working Day),25Instructional Day(Working Day),26Instructional Day(Working Day),27Instructional Day(Working Day),28Instructional Day(Working Day),29
+MAR-2025,30,31No Instructional Day(Ramzan),,,,,
+APR-2025,,,,,,,1No Instructional Day(Vibrance)
+APR-2025,2,3Instructional Day(Working Day),4Instructional Day(Working Day),5Instructional Day(Working Day),6Instructional Day(Working Day),7Instructional Day(Working Day),8Instructional Day(Friday Dayorder)
+APR-2025,9,10Instructional Day(Working Day),11Instructional Day(Working Day),12Instructional Day(Working Day),13Instructional Day(Working Day),14Holiday(Holi),15CAT - II(CAT - II)
+APR-2025,16CAT - II(CAT - II),17CAT - II(CAT - II),18CAT - II(CAT - II),19CAT - II(CAT - II),20CAT - II(CAT - II),21CAT - II(CAT - II),22CAT - II(CAT - II)
+APR-2025,23,24Instructional Day(Working Day),25Instructional Day(Working Day),26Instructional Day(Working Day),27Instructional Day(Working Day),28Instructional Day(Working Day),29
+APR-2025,30,31No Instructional Day(Ramzan),,,,,
