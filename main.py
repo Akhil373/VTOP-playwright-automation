@@ -20,7 +20,7 @@ def run(playwright: Playwright) -> None:
     os.makedirs("temp", exist_ok=True)
     os.makedirs("data", exist_ok=True)
 
-    browser: Browser = playwright.webkit.launch(headless=False)
+    browser: Browser = playwright.firefox.launch(headless=False)
     context: BrowserContext = browser.new_context(
         viewport={"width": 800, "height": 600},
         screen={"width": 800, "height": 600}
@@ -80,6 +80,17 @@ def run(playwright: Playwright) -> None:
         page.locator("#btnClosePopup").click(timeout=5000)
     except Exception:
         print("LOG: Popup did not appear. Continuing.")
+
+
+    # ---------------- JUST LOG-IN TO VTOP -------------------
+
+    # Temporarily using this code just to log-in to VTOP and continue with my work
+    print("Login successful. Press ENTER to close the browser.")
+    input()
+    context.close()
+    browser.close()
+
+    # -------- COMMENT ABOVE SECTION TO START SCRAPING ---------
 
     page.locator('#vtopHeader button[data-bs-target="#expandedSideBar"]').click()
     page.locator("#acMenuItemHDG0067 button").click()

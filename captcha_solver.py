@@ -25,24 +25,6 @@ def solve_captcha_with_gemini(image_path: str) -> str:
     return result.text if result.text is not None else ""
 
 
-# def solve_captch_local(image_path: str) -> str: 
-#     processor  = TrOCRProcessor.from_pretrained("anuashok/ocr-captcha-v3", use_fast=True)
-
-#     model = VisionEncoderDecoderModel.from_pretrained("anuashok/ocr-captcha-v3")
-
-#     image: Image.Image = Image.open(image_path).convert("RGB")
-#     image: Image.Image = Image.open(image_path).convert("RGBA")
-
-#     background: Image.Image = Image.new("RGBA", image.size, (255, 255, 255))
-#     combined: Image.Image = Image.alpha_composite(background, image).convert("RGB")
-
-#     pixel_values = processor(combined, return_tensors="pt").pixel_values
-
-#     generated_ids = model.generate(pixel_values)
-#     generated_text = processor.batch_decode(generated_ids, skip_special_tokens=True)[0]
-
-#     return generated_text
-
 
 def debug_solve_local(image_path: str) -> str: 
     print("--- Starting Local Solver ---")
