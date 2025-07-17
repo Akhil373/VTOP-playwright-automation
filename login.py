@@ -5,8 +5,8 @@ from playwright.sync_api import sync_playwright, Playwright, expect, Page, Brows
 from dotenv import load_dotenv
 from shutil import rmtree
 
-from captcha_solver import get_captcha_and_solve
-from data_processor import clean_file, html_to_csv, combine_csv
+from utils.captcha_solver import get_captcha_and_solve
+from utils.data_processor import clean_file, html_to_csv, combine_csv
 
 load_dotenv()
 
@@ -22,13 +22,9 @@ def login_run(playwright: Playwright) -> None:
     os.makedirs("data", exist_ok=True)
 
     browser: Browser = playwright.chromium.launch(
-        executable_path='/usr/bin/brave-browser',
         headless=False
     )
-    context: BrowserContext = browser.new_context(
-        # viewport={"width": 800, "height": 600},
-        # screen={"width": 800, "height": 600}
-    )
+    context: BrowserContext = browser.new_context()
     page: Page = context.new_page()
     
     page.goto("https://vtopcc.vit.ac.in/")

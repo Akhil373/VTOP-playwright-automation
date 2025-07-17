@@ -27,3 +27,4 @@ data/*
 temp/*
 
 ML_training
+test.py

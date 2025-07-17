@@ -1,13 +1,10 @@
 import os
 from time import sleep
-from typing import LiteralString
 from playwright.sync_api import sync_playwright, Playwright, expect, Page, Browser, BrowserContext, Locator
 from dotenv import load_dotenv
 from shutil import rmtree
-from captcha_solver import get_captcha_and_solve
-from data_processor import clean_file, html_to_csv, combine_csv
-from bs4 import BeautifulSoup
-import pandas as pd
+from utils.captcha_solver import get_captcha_and_solve
+from utils.data_processor import clean_file, html_to_csv, attendance_stats
 from datetime import datetime
 
 load_dotenv()
@@ -23,19 +20,18 @@ def attendance_run(playwright: Playwright) -> None:
     os.makedirs("temp", exist_ok=True)
     os.makedirs("data", exist_ok=True)
 
-    data_path = 'temp/attendance.html'
-    clean_data = 'data/clean_attendance.html'
-    output_path = f'data/final_attendance{datetime.today().strftime('%Y-%m-%d')}.csv'
+    data_path = f'temp/attendance_{datetime.today().strftime("%Y-%m-%d")}.html'
+    clean_data = f'data/clean_attendance_{datetime.today().strftime("%Y-%m-%d")}.html'
+    output_path = f'data/attendance_{datetime.today().strftime("%Y-%m-%d")}.csv'
 
-    browser: Browser = playwright.chromium.launch(
-        executable_path='/usr/bin/brave-browser',
-        headless=False
-    )
+    browser: Browser = playwright.chromium.launch(headless=False)
     context: BrowserContext = browser.new_context()
     page: Page = context.new_page()
 
     page.goto("https://vtopcc.vit.ac.in/")
     page.locator("#stdForm a").click()
+
+    page.wait_for_load_state('networkidle', timeout=25000)
 
     max_retries = 5
     logged_in = False
@@ -63,35 +59,37 @@ def attendance_run(playwright: Playwright) -> None:
             page.locator("#captchaStr").fill(solved_captcha)
             print(f"LOG: Filled CAPTCHA with: {solved_captcha}")
 
-        except Exception:
+        except Exception as e:
+            print(f"Error: {e}")
             print("LOG: CAPTCHA block not found or timed out. Skipping CAPTCHA step.")
 
         page.locator("#submitBtn").click()
 
-        # Ask if there's a Google reCAPTCHA to solve manually
-        recaptcha_response = input("If there's a Google reCAPTCHA on screen, press 'y' and solve it: ")
-        if recaptcha_response.lower() == 'y':
-            input("Press Enter when you've completed the reCAPTCHA...")
+        sleep(1)  
+        
+        if "login" not in page.url.lower():
+            print("LOG: Login successful.")
             logged_in = True
             break
 
         try:
-            error_message: Locator = page.get_by_role("alert").get_by_text("Invalid Captcha")
-            expect(error_message).to_be_visible(timeout=10000)
+            error_message = page.get_by_role("alert").get_by_text("Invalid Captcha")
+            expect(error_message).to_be_visible(timeout=5000)
+            
             print("LOG: Invalid CAPTCHA text found. Retrying...")
-
+            continue
+        
         except Exception:
-            print('LOG: CAPTCHA valid or not present, moving forward.')
-            sleep(2)
-            page.locator("#btnClosePopup").click(timeout=20000)
-            logged_in = True
-            break
-
+            sleep(5)
+            continue
 
     if not logged_in:
         print(f"FATAL: Failed to log in after {max_retries} attempts. Exiting.")
         browser.close()
         return
+    
+    sleep(1)
+    page.locator("#btnClosePopup").click(timeout=20000)
 
     page.locator('#vtopHeader button[data-bs-target="#expandedSideBar"]').click()
     page.locator("#acMenuItemHDG0067 button").click()
@@ -122,15 +120,17 @@ def attendance_run(playwright: Playwright) -> None:
     except Exception as e:
         print(e)
 
+    attendance_stats(output_path)
+
     rmtree('temp/')
 
     print("\nLOG: Job done successfully.")
 
-    print("Closing browser in 10 seconds.")
-    sleep(10)
+    print("Closing browser in 5 seconds.")
+    sleep(5)
     context.close()
     browser.close()
-
+    
 if __name__ == "__main__":
     with sync_playwright() as playwright:
         attendance_run(playwright)

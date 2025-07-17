@@ -52,21 +52,29 @@ def combine_csv(input_dir="temp"):
         combined_df.to_csv(output_file, index=False)
         print(f"Successfully combined {len(all_files)} files into '{output_file}'")
 
+
 def attendance_stats(current_attendance):
-    df = pd.read_csv(current_attendance)
+    df = pd.read_csv(current_attendance, skipfooter=1, engine='python')
+
+    df['Attended Classes'] = pd.to_numeric(df['Attended Classes'])
+    df['Total Classes'] = pd.to_numeric(df['Total Classes'])
 
     attended_sum = df['Attended Classes'].sum()
     total_sum = df['Total Classes'].sum()
 
-    missed_course = df[df['Attended Classes']] < df['Total Classes']
+    missed_courses_df = df[df['Attended Classes'] < df['Total Classes']]
 
-    if total_sum != 0:
+    if total_sum > 0:
         overall_percent = (attended_sum / total_sum) * 100
+        print(f'Overall Percentage: {overall_percent:.2f}%')
     else:
-        print('Error: Total classes is 0')
-        overall_percent = 0
+        print('Error: Total classes is 0.')
 
-    print('Total Attended Classes:', attended_sum)
-    print('Total Classes:', total_sum)
-    print(f'Overall percentage: {overall_percent:.2f}%')
-    print(f'Attendance reduced in {missed_course}')
+    print(f'Total Attended Classes: {attended_sum}')
+    print(f'Total Classes: {total_sum}')
+    
+    if not missed_courses_df.empty:
+        print("\nCourses with Missed Classes:")
+        print(missed_courses_df[['Course\nTitle', 'Attended Classes', 'Total Classes', 'Attendance Percentage']])
+    else:
+        print("\nGreat! No classes missed in any course.")
