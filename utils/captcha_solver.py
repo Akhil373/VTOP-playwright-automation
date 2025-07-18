@@ -22,6 +22,7 @@ def solve_captcha_with_gemini(image_path: str) -> str:
 
     img = Image.open(image_path)
     img = isolate_red(img)
+    img.show()
 
     client: genai.client.Client = genai.Client()
     img: Image.Image = Image.open(image_path)
@@ -35,6 +36,7 @@ def solve_captcha_with_gemini(image_path: str) -> str:
             'Output: ',
         ],
     )
+    print(result)
     return result.text if result.text is not None else ""
 
 def debug_solve_local(image_path: str) -> str:
