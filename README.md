@@ -33,4 +33,5 @@ python main.py
 This repository includes an example that extracts the academic calendar from VTOP and saves it as a CSV file. You can adapt the code to automate other tasks on VTOP as needed.
 
 ## CAPTCHA Solving Note
-CAPTCHA solving in this project uses general-purpose OCR and Gemini API, which may not always succeed. For more reliable results, consider custom training a machine learning model specifically for the target CAPTCHA. Since this project focuses on Playwright automations, CAPTCHA solving may occasionally fail and require retries.
+CAPTCHA solving in this project uses general-purpose OCR and Gemini API, which may not always succeed. For more reliable results, consider custom training a machine learning model specifically for the target CAPTCHA. Since this project focuses on Playwright automations, CAPTCHA solving may occasionally fail and require retries. Better captcha solving system is on the todo.
+
